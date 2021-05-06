@@ -60,9 +60,9 @@ app.post("/search", (req, res) => {
                 req.body.cussalesytd,
                 req.body.cussalesprev
               ]
-  const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=$1 or cusfname ilike $2 or cuslname ilike $3 or cusstate ilike $4 or cussalesytd >= $5 or cussalesprev >= $6);"; 
-  const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where cusfname ilike $2;"; 
- const sql = `SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=${req.body.cusid} or cusfname ilike '${req.body.cusfname}%');`; 
+//   const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=$1 or cusfname ilike $2 or cuslname ilike $3 or cusstate ilike $4 or cussalesytd >= $5 or cussalesprev >= $6);"; 
+//   const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where cusfname ilike $2;"; 
+//  const sql = `SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=${req.body.cusid} or cusfname ilike '${req.body.cusfname}%');`; 
  const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer"; 
   pool.query(sql,[], (err, result) => {
     var message = "";
