@@ -36,12 +36,7 @@ function reset() {
   
 function getTotal() {
     const url = '/total';
-    fetch(url, {
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(url)
     .then(response => response.json())
     .then(result => {
       document.getElementById("lblTotal").innerHTML = "Total number of records in database: " + result[0].total;
