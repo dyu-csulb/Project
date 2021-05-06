@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require("body-parser");
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 /*==================
   API Routes
@@ -13,26 +16,21 @@ const pool = new Pool({
 });
 
 
-// router.get("/", (req, res) => {
-//   const sql = "SELECT * FROM CUSTOMER ORDER BY cusFname";
-//   pool.query(sql, [], (err, result) => {
-//       var message = "";
-//       var model = {};
-//       if(err) {
-//           message = `Error - ${err.message}`;
-//       } else {
-//           message = "success";
-//           model = result.rows;
-//       };
-//       res.json(model);
-//   });
-// });
-
 
 // POST /search
-router.post("/search",  (req, res) => {
-  const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where cusstate='CA';";
-  //const book = [req.body.Title, req.body.Author, req.body.Comments];
+router.post("/search", (req, res) => {
+  // const obj = [
+  //               req.body.cusid,
+  //               req.body.cusfname,
+  //               req.body.cuslname,
+  //               req.body.cusstate,
+  //               req.body.cussalesytd,
+  //               req.body.cussalesprev
+  //             ]
+  //const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=$1 or cusfname ilike $2 or cuslname ilike $3 or cusstate ilike $4 or cussalesytd >= $5 or cussalesprev >= $6);"; 
+  //const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where cusfname ilike $2;"; 
+ // const sql = `SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=${req.body.cusid} or cusfname ilike '${req.body.cusfname}%');`; 
+ const sql = `SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where 1=1;`; 
   pool.query(sql,[], (err, result) => {
     var message = "";
     var data = {};
