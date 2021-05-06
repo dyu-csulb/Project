@@ -45,7 +45,7 @@ router.post("/search", (req, res) => {
 });
 
 
-router.get("/total", (req, res) => {
+router.get("https://dyu-project.herokuapp.com/api/customer/total", (req, res) => {
   const sql = "SELECT count(*) as Total FROM CUSTOMER";
   pool.query(sql, [], (err, result) => {
       var message = "";
