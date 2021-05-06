@@ -3,7 +3,8 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-
+const dotenv = require('dotenv');
+require('dotenv').config()
 /*==================
   API Routes
 ===================*/
@@ -45,7 +46,7 @@ router.post("/search", (req, res) => {
 });
 
 
-router.get("https://dyu-project.herokuapp.com/api/customer/total", (req, res) => {
+router.get("/total", (req, res) => {
   const sql = "SELECT count(*) as Total FROM CUSTOMER";
   pool.query(sql, [], (err, result) => {
       var message = "";

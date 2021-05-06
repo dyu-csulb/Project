@@ -28,10 +28,10 @@ app.use('/Export', require('./controller/routes/pageRoutes'));
 /*==================
   API Routes
 ===================*/
-app.use('/api/customer', require('./controller/api/customer'));
-app.use('/api/customer/total', require('./controller/api/customer'));
-app.use('/api/customer/search', require('./controller/api/customer'));
-app.use('/api/products', require('./controller/api/products'));
+app.use('/customer', require('./controller/api/customer'));
+app.use('/customer/total', require('./controller/api/customer'));
+app.use('/customer/search', require('./controller/api/customer'));
+app.use('/products', require('./controller/api/products'));
 
 
 app.use(function(req, res) {
