@@ -46,6 +46,15 @@ const pool = new Pool({
 });
 
 
+/*==================
+  Start Express Server
+===================*/
+app.listen(process.env.PORT || 5200, () => {
+  console.log("Server started (http://localhost:5200/)!");
+});
+
+
+
 // POST /search
 app.post("/search", (req, res) => {
   // const obj = [
@@ -104,12 +113,3 @@ app.use((req, res, next) => {
   next();
 });
 
-
-/*==================
-  Start Express Server
-===================*/
-app.listen(process.env.PORT || 5200, () => {
-    console.log("Server started (http://localhost:5200/)!");
-});
-
-  

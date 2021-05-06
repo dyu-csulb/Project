@@ -35,7 +35,7 @@ function reset() {
 
   
 function getTotal() {
-    const url = '/total';
+    const url = 'https://dyu-project.herokuapp.com/total';
     fetch(url)
     .then(response => response.json())
     .then(result => {
@@ -67,7 +67,7 @@ function filters() {
 function getData() {
   resetTable();
 
-  const url = '/search';
+  const url = 'https://dyu-project.herokuapp.com/search';
   let myObj = []  
   fetch(url, {
     method: 'POST', 
