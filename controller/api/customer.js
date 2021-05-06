@@ -19,7 +19,7 @@ const pool = new Pool({
 
 
 // POST /search
-router.post("/search", (req, res) => {
+router.post("/api/customer/search", (req, res) => {
   // const obj = [
   //               req.body.cusid,
   //               req.body.cusfname,
@@ -46,7 +46,7 @@ router.post("/search", (req, res) => {
 });
 
 
-router.get("/total", (req, res) => {
+router.get("/api/customer/total", (req, res) => {
   const sql = "SELECT count(*) as Total FROM CUSTOMER";
   pool.query(sql, [], (err, result) => {
       var message = "";

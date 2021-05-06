@@ -32,10 +32,10 @@ app.use('/Export', require('./controller/routes/pageRoutes'));
 /*==================
   API Routes
 ===================*/
-// app.use('/customer', require('./controller/api/customer'));
-// app.use('/customer/total', require('./controller/api/customer'));
-// app.use('/customer/search', require('./controller/api/customer'));
-// app.use('/products', require('./controller/api/products'));
+app.use('/api/customer', require('./controller/api/customer'));
+app.use('/api/customer/total', require('./controller/api/customer'));
+app.use('/api/customer/search', require('./controller/api/customer'));
+app.use('/api/products', require('./controller/api/products'));
 
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -56,7 +56,7 @@ app.listen(process.env.PORT || 5200, () => {
 
 
 // POST /search
-app.post("/search", (req, res) => {
+//app.post("/search", (req, res) => {
   // const obj = [
   //               req.body.cusid,
   //               req.body.cusfname,
@@ -68,35 +68,35 @@ app.post("/search", (req, res) => {
   //const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=$1 or cusfname ilike $2 or cuslname ilike $3 or cusstate ilike $4 or cussalesytd >= $5 or cussalesprev >= $6);"; 
   //const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where cusfname ilike $2;"; 
  // const sql = `SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer where (cusid=${req.body.cusid} or cusfname ilike '${req.body.cusfname}%');`; 
- const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer"; 
-  pool.query(sql,[], (err, result) => {
-    var message = "";
-    var data = {};
-    if(err) {
-      message = `Error - ${err.message}`;
-    } else {
-        message = "success";
-        data = result.rows;
-    };
-    res.json(data);
-  });
-});
+//  const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer"; 
+//   pool.query(sql,[], (err, result) => {
+//     var message = "";
+//     var data = {};
+//     if(err) {
+//       message = `Error - ${err.message}`;
+//     } else {
+//         message = "success";
+//         data = result.rows;
+//     };
+//     res.json(data);
+//   });
+// });
 
 
-app.get("/total", (req, res) => {
-  const sql = "SELECT count(*) as Total FROM CUSTOMER";
-  pool.query(sql, [], (err, result) => {
-      var message = "";
-      var data = {};
-      if(err) {
-          message = `Error - ${err.message}`;
-      } else {
-          message = "success";
-          data = result.rows;
-      };
-      res.json(data);
-  });
-});
+// app.get("/total", (req, res) => {
+//   const sql = "SELECT count(*) as Total FROM CUSTOMER";
+//   pool.query(sql, [], (err, result) => {
+//       var message = "";
+//       var data = {};
+//       if(err) {
+//           message = `Error - ${err.message}`;
+//       } else {
+//           message = "success";
+//           data = result.rows;
+//       };
+//       res.json(data);
+//   });
+// });
 
 
 app.use(function(req, res) {
