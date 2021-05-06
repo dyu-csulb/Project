@@ -35,7 +35,7 @@ function reset() {
 
   
 function getTotal() {
-    const url = '/api/customer/total';
+    const url = 'https://dyu-project.herokuapp.com/api/customer/total';
     fetch(url, {
       method: 'GET', 
       headers: {
@@ -72,7 +72,7 @@ function filters() {
 function getData() {
   resetTable();
 
-  const url = '/api/customer/search';
+  const url = 'https://dyu-project.herokuapp.com/api/customer/search';
   let myObj = []  
   fetch(url, {
     method: 'POST', 
