@@ -29,16 +29,15 @@ app.use('/Reports', require('./controller/routes/pageRoutes'));
 app.use('/Import', require('./controller/routes/pageRoutes'));
 app.use('/Export', require('./controller/routes/pageRoutes'));
 
-app.use('/search', require('./controller/api/search'));
-app.use('/total', require('./controller/api/total'));
+/*==================
+  API Routes
+===================*/
+app.use('/api/search', require('./controller/api/search'));
+app.use('/api/total', require('./controller/api/total'));
 
-// const { Pool } = require('pg');
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-// }
-// });
+app.use(function(req, res) {
+  res.status(404).send({url: req.originalUrl + ' not found'})
+});
 
 /*==================
   Start Express Server
@@ -46,57 +45,4 @@ app.use('/total', require('./controller/api/total'));
 app.listen(process.env.PORT || 5200, () => {
   console.log("Server started (http://localhost:5200/)!");
 });
-
-
-
-// /*==================
-//   API Routes
-// ===================*/
-// app.post("/search", (req, res) => {
-//  const sql = "SELECT cusid, cusfname, cuslname, cusstate, cussalesytd, cussalesprev FROM customer"; 
-//   pool.query(sql,[], (err, result) => {
-//     var message = "";
-//     var data = {};
-//     if(err) {
-//       message = `Error - ${err.message}`;
-//     } else {
-//         message = "success";
-//         data = result.rows;
-//     };
-//     res.json(data);
-//   });
-// });
-
-
-// app.get("/total", (req, res) => {
-//   const sql = "SELECT count(*) as Total FROM CUSTOMER";
-//   pool.query(sql, [], (err, result) => {
-//       var message = "";
-//       var data = {};
-//       if(err) {
-//           message = `Error - ${err.message}`;
-//       } else {
-//           message = "success";
-//           data = result.rows;
-//       };
-//       res.json(data);
-//   });
-// });
-
-
-// app.use(function(req, res) {
-//   res.status(404).send({url: req.originalUrl + ' not found'})
-// });
-
-/*==================================================================
-  Enable CORS (see https://enable-cors.org/server_expressjs.html)
-===================================================================*/
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
 

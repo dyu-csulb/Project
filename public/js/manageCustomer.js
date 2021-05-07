@@ -29,7 +29,7 @@ function reset() {
 
   
 function getTotal() {
-    const url = '/total';
+    const url = '/api/total';
     fetch(url)
     .then(response => response.json())
     .then(result => {
@@ -61,7 +61,7 @@ function filters() {
 function getData() {
   resetTable();
 
-  const url = '/search';
+  const url = '/api/search';
   let myObj = []  
   fetch(url, {
     method: 'POST', 
