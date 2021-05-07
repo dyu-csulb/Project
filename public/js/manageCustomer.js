@@ -6,17 +6,11 @@ function bind() {
     enableToolTip();
 }
 
-
-
 function enableToolTip() {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
        return new bootstrap.Tooltip(tooltipTriggerEl)
     })
-}
-
-function test() {
-
 }
 
 function search() {
