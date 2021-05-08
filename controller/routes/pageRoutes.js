@@ -16,10 +16,6 @@ router.get("/AddCustomer", (req, res) => {
   res.render("addCustomer");
 });
 
-router.get("/Reports", (req, res) => { 
-  res.render("reports");
-});
-
 router.get("/Import", (req, res) => { 
   res.render("import");
 });

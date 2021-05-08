@@ -8,3 +8,12 @@
         padding: 15px;
         border-radius: 5px;
     }
+
+    .my-row {
+        padding: 5px;
+    }
+
+    .swal-size-sm 
+    {
+       font-size: 14px !important;
+    }

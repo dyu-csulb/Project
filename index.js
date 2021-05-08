@@ -25,7 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', require('./controller/routes/pageRoutes'));
 app.use('/ManageCustomer', require('./controller/routes/pageRoutes'));
 app.use('/AddCustomer', require('./controller/routes/pageRoutes'));
-app.use('/Reports', require('./controller/routes/pageRoutes'));
 app.use('/Import', require('./controller/routes/pageRoutes'));
 app.use('/Export', require('./controller/routes/pageRoutes'));
 
@@ -34,6 +33,8 @@ app.use('/Export', require('./controller/routes/pageRoutes'));
 ===================*/
 app.use('/api/search', require('./controller/api/search'));
 app.use('/api/total', require('./controller/api/total'));
+app.use('/api/delete', require('./controller/api/delete'));
+app.use('/api/update', require('./controller/api/update'));
 
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
