@@ -22,7 +22,6 @@ function addRecord(callTotal) {
         cuslname: document.getElementById("txtLastName_edit").value,
         cusstate: document.getElementById("cboState_edit").value,
         cussalesytd: document.getElementById("txtSalesYTD_edit").value,
-
         cussalesprev: document.getElementById("txtPrevSalesYTD_edit").value    
       }
         /*-----------------------------
@@ -38,7 +37,7 @@ function addRecord(callTotal) {
           })
           .then(result => {     
             if (callTotal==true) {
-              getTotal();
+              document.getElementById("lblTotal").innerHTML = getTotal();
               getData(); 
             } 
               Swal.fire({

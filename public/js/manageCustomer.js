@@ -5,14 +5,16 @@ window.addEventListener("load", bind);
   Bind Functions
 =================================*/
 function bind() {
-  getTotal();
   enableToolTip();
-
+  getTotal();
   document.getElementById("btnAdd").addEventListener("click", showAddModal); 
   document.getElementById("btnDelete").addEventListener("click", deleteRecordWarning); 
   document.getElementById("btnSave").addEventListener("click", saveRecord); 
   
+
 }
+
+
 
 /*===============================
   Get Search Results
@@ -65,7 +67,6 @@ function showAddModal() {
   document.getElementById("btnSave").hidden = false
   let editModal = new bootstrap.Modal(document.getElementById('customerModal'))
   editModal.show()
-
 }
 
 /*===============================
@@ -94,21 +95,7 @@ return myObj;
 }
 
 
-/*===============================
-  Get record count total
-=================================*/
-function getTotal() {
-    const url = '/api/total';
-    fetch(url)
-    .then(response => response.json())
-    .then(result => {
-      document.getElementById("lblTotal").innerHTML = "Total number of records in database: " + result[0].total;
-    })
-    .catch((error) => {
-      console.log('Error:', error);
-      alert(error);
-    });
-}
+
 
 /*===============================
   Save record

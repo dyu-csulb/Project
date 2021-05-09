@@ -1,3 +1,35 @@
+ 
 <%- include("../views/shared/_header.ejs") -%>
-<h1>Export</h1>
+<script src="js/export.js"></script>
+<script src="js/getTotal.js"></script>
+
+<form action="/ExportFile" method="post">
+<div>
+    <br/>
+    <h3>Customer List Export</h3>
+    <hr/>
+    <div>     
+        <div class="row">
+            <div class="col-6 mt-1">
+                <label id="lblTotal"></label>
+                <label>Enter a file name and click "Export Customer List".</label>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-2 mt-1">
+                <label>
+                   Enter a FileName:
+                </label>  
+            </div>
+            <div class="col-3">
+                <input type="text" name="FileName" required class="form-control input-sm" id="FileName">
+            </div>
+            <div class="col-6 mt-1">
+                <button id="btnSubmit" type="submit" class="btn btn-primary btn-sm">Export Customer List</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 <%- include("../views/shared/_footer.ejs") -%>

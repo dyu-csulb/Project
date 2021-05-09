@@ -32,8 +32,6 @@ router.post("/", (req, res) => {
             data = result.rows;
         };
         res.json(data);
-        console.log(sql);
-        console.log(param);
     });
     });
 

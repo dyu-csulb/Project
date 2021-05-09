@@ -20,7 +20,6 @@ function updateRecord() {
     })
     .then(response => response.json())
     .then(result => {
-      console.log(data);
       getData();
       document.getElementById('btnClose').click();
       Swal.fire({

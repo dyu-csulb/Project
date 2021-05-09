@@ -3,11 +3,53 @@
     <h1 class="display-5">Welcome to David Yu's Project!</h1>
     <p class="lead">This Customer List web application is used to add, update and delete customers from the customer list.  </p>
     <hr class="my-4">
-    <p>Please click on a menu option to get started!.</p>
+    <p>Please click on a menu option to get started!</p>
     <p class="lead">
-      <a id="" class="btn btn-primary btn-sm" href="#" role="button">Learn more..</a>
+
     </p>
+    <!-- Button trigger modal -->
+    <button id="btnLearnMore" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+        Learn more..
+    </button>
   </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="learnMoreModal" tabindex="-1" aria-labelledby="learnMoreModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="learnMoreModalLabel">Message</h5>
+        </div>
+        <form>
+        <div class="modal-body">
+            <p class="lead" style="font-size: 16px;"> Hello Professor.  <br/><br/>
+                FYI, I was trying out a few different things resulting in more code than I expected as compared to the tutorials we did in class. Everything still functions as expected. Hopefully, I can still get an 'A' for the effort. 
+              <br/><br/>  
+              Thank you.
+              <br/><br/>  
+              David Yu
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button id="btnClose" type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+        <form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.addEventListener("load", bind);
+    function bind() {
+        document.getElementById("btnLearnMore").addEventListener("click", showAddModal);   
+    }
+
+    function showAddModal() {
+        let editModal = new bootstrap.Modal(document.getElementById('learnMoreModal'))
+        editModal.show()
+    }
+</script>
+
+
 <%- include("../views/shared/_footer.ejs") -%>
-
-

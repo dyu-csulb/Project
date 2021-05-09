@@ -38,9 +38,16 @@ app.use('/api/update', require('./controller/api/update'));
 app.use('/api/add', require('./controller/api/add'));
 app.use('/api/maxId', require('./controller/api/maxId'));
 
+/*==================
+  Export .csv file
+===================*/
+app.use('/ExportFile', require('./controller/routes/export'));
+
+
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
+
 
 /*==================
   Start Express Server
