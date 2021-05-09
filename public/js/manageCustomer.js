@@ -10,7 +10,8 @@ function bind() {
 
   document.getElementById("btnAdd").addEventListener("click", showAddModal); 
   document.getElementById("btnDelete").addEventListener("click", deleteRecordWarning); 
-  document.getElementById("btnSave").addEventListener("click", updateRecord); 
+  document.getElementById("btnSave").addEventListener("click", saveRecord); 
+  
 }
 
 /*===============================
@@ -32,6 +33,7 @@ function reset() {
   document.getElementById("txtPrevSalesYTD").value='';
   document.getElementById("lblRecordsFound").innerHTML = "";
   resetTable();
+  document.getElementById("txtId").focus();
 }
 
 /*===============================
@@ -109,84 +111,19 @@ function getTotal() {
 }
 
 /*===============================
-  Update record
+  Save record
 =================================*/
-function updateRecord() {
-  let v_cussalesytd = document.getElementById("txtSalesYTD_edit").value;
-  let v_cussalesprev = document.getElementById("txtPrevSalesYTD_edit").value;
-  let data = {
-    cusid: document.getElementById("txtId_edit").value,
-    cusfname: document.getElementById("txtFirstName_edit").value,
-    cuslname: document.getElementById("txtLastName_edit").value,
-    cusstate: document.getElementById("cboState_edit").value,
-    cussalesytd: v_cussalesytd,
-    cussalesprev: v_cussalesprev    
+function saveRecord() {
+  let type = document.getElementById("customerModalLabel").innerHTML;
+  if (type =='Edit Customer') {
+    updateRecord();
   }
-  const url = '/api/update';
-  fetch(url, {
-    method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(result => {
-    console.log(data);
-    getData();
-    document.getElementById('btnClose').click();
-    Swal.fire({
-      title: 'Success',
-      text: "Customer record has been updated successfully!",
-      icon: 'success',
-      showCancelButton: false,
-      //confirmButtonColor: '#3085d6',
-      //cancelButtonColor: '#d33',
-      customClass: 'swal-size-sm',
-      confirmButtonText: 'OK'
-  })
-  })
-  .catch((error) => {
-    console.log('Error:', error);
-  });
+  else if (type =='Add Customer') {
+    addRecord(true);
+  }
 }
 
-/*===============================
-  Delete record
-=================================*/
-function deleteRecord() {
-  let data = {
-    cusid: document.getElementById("txtId_edit").value
-  }
-  const url = '/api/delete';
-  fetch(url, {
-    method: 'POST', 
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(result => {
-    console.log(data);
-    getData();
-    getTotal();
-    document.getElementById('btnClose').click();
-      Swal.fire({
-        title: 'Success',
-        text: "Customer record has been deleted successfully!",
-        icon: 'success',
-        showCancelButton: false,
-        //confirmButtonColor: '#3085d6',
-        //cancelButtonColor: '#d33',
-        customClass: 'swal-size-sm',
-        confirmButtonText: 'OK'
-    })
-  })
-  .catch((error) => {
-    console.log('Error:', error);
-  });
-}
+
 /*==============================================================
   Get Search data from database, create table and add buttons. 
 ===============================================================*/
@@ -336,26 +273,6 @@ function getData() {
     )
     .catch(function (err) {
       console.log('Fetch Error: ', err);
-    })
-  }
-
-/*===============================
-  Show Delete record warning message
-=================================*/
-  function deleteRecordWarning() {
-    Swal.fire({
-      title: 'Delete record?',
-      text: "Are you sure you want to delete this record? You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      customClass: 'swal-size-sm',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteRecord();
-      }
     })
   }
 

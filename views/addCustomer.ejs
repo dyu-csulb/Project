@@ -1,13 +1,16 @@
 <%- include("../views/shared/_header.ejs") -%>
+<script src="js/addCustomer.js"></script>
+<script src="js/common.js"></script>
 <div>
     <br/>
     <h3>Add Customers</h3>
     <hr/>
-    <div style="width: 400px;">
-       
+    <div style="width: 400px;">     
         <%- include("../views/shared/_edit.ejs") -%>
     </div>
-    
+    <hr/>
+    <button id="btnReset" type="button" onclick="resetAddNew()" class="btn btn-secondary btn-sm">Reset</button>
+    <button id="btnSave" type="button" onclick="addRecord()" class="btn btn-primary btn-sm">Save changes</button>
 </div>
 
 <%- include("../views/shared/_footer.ejs") -%>

@@ -21,19 +21,21 @@ const pool = new Pool({
 ===================*/
 router.post("/", (req, res) => {
     const param = [req.body.cusid, req.body.cusfname, req.body.cuslname, req.body.cusstate, req.body.cussalesytd, req.body.cussalesprev]
-    const sql = "UPDATE CUSTOMER SET cusfname=$2,cuslname=$3,cusstate=$4,cussalesytd=$5,cussalesprev=$6 WHERE cusid=$1"
-    pool.query(sql, param, (err, result) => {
+    const sql = "INSERT INTO CUSTOMER (cusId, cusFname, cusLname, cusState, cusSalesYTD, cusSalesPrev) values ($1,$2,$3,$4,$5,$6)"
+    pool.query(sql,param, (err, result) => {
         var message = "";
         var data = {};
         if(err) {
             message = `Error - ${err.message}`;
         } else {
             message = "success";
-         
             data = result.rows;
         };
         res.json(data);
+        console.log(sql);
+        console.log(param);
     });
     });
-    
+
+     
     module.exports = router;
