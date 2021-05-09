@@ -17,3 +17,8 @@
     {
        font-size: 12px !important;
     }
+
+    .required::before {
+        color:red;
+        content:'* '
+    }

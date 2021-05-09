@@ -16,3 +16,21 @@ function enableToolTip() {
 }
 
 
+
+function invalidEntryMsg(messagetext) {
+  Swal.fire({
+      title: 'Invalid Entry',
+      text: messagetext,
+      icon: 'warning',
+      showCancelButton: false,
+      customClass: 'swal-size-sm',
+      confirmButtonText: 'OK'
+  })
+}
+
+function isNumeric(str) {
+  if (typeof str != "string") return false
+  return !isNaN(str) && 
+         !isNaN(parseFloat(str)) 
+}
+

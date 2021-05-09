@@ -9,6 +9,31 @@ function resetAddNew() {
   document.getElementById("txtFirstName_edit").focus();
 }
 
+function validate() {
+  if ((txtFirstName_edit.value).trim() ==='') {
+    invalidEntryMsg('Please enter a first name!');
+    txtFirstName_edit.focus()
+  } 
+  else if ((txtLastName_edit.value).trim()  ==='') {
+    invalidEntryMsg('Please enter a last name!');
+    txtLastName_edit.focus();
+  }
+  else if (cboState_edit.value ==='') {
+    invalidEntryMsg('Please select a state!');
+    cboState_edit.focus();
+  }
+  else if (isNumeric(((txtSalesYTD_edit.value).replace('$','').replace(',','')).replace('','0').trim()) ==false) {
+    invalidEntryMsg('Please enter a valid money values for Sales YTD!');
+    txtSalesYTD_edit.focus();
+  }
+  else if (isNumeric(((txtPrevSalesYTD_edit.value).replace('$','').replace(',','')).replace('','0').trim()) ==false) {
+    invalidEntryMsg('Please enter a valid money values for Prev Sales YTD!');
+    txtSalesYTD_edit.focus();
+  }
+  else {
+    addRecord();
+  }
+}
 
 function addRecord(callTotal) {
   const url = '/api/maxId';

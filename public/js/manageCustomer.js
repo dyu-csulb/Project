@@ -101,13 +101,41 @@ return myObj;
   Save record
 =================================*/
 function saveRecord() {
+  let txtFirstName_edit 		= document.getElementById("txtFirstName_edit");
+  let txtLastName_edit		= document.getElementById("txtLastName_edit");
+  let cboState_edit			= document.getElementById("cboState_edit");
+  let txtSalesYTD_edit		= document.getElementById("txtSalesYTD_edit");	
+  let txtPrevSalesYTD_edit	= document.getElementById("txtPrevSalesYTD_edit");
   let type = document.getElementById("customerModalLabel").innerHTML;
-  if (type =='Edit Customer') {
-    updateRecord();
-  }
-  else if (type =='Add Customer') {
-    addRecord(true);
-  }
+
+    if ((txtFirstName_edit.value).trim() ==='') {
+      invalidEntryMsg('Please enter a first name!');
+      txtFirstName_edit.focus()
+    } 
+    else if ((txtLastName_edit.value).trim()  ==='') {
+      invalidEntryMsg('Please enter a last name!');
+      txtLastName_edit.focus();
+    }
+    else if (cboState_edit.value ==='') {
+      invalidEntryMsg('Please select a state!');
+      cboState_edit.focus();
+    }
+    else if (isNumeric(((txtSalesYTD_edit.value).replace('$','').replace(',','')).replace('','0').trim()) ==false) {
+      invalidEntryMsg('Please enter a valid money values for Sales YTD!');
+      txtSalesYTD_edit.focus();
+    }
+    else if (isNumeric(((txtPrevSalesYTD_edit.value).replace('$','').replace(',','')).replace('','0').trim()) ==false) {
+      invalidEntryMsg('Please enter a valid money values for Prev Sales YTD!');
+      txtSalesYTD_edit.focus();
+    }
+    else {
+      if (type =='Edit Customer') {
+        updateRecord();
+      }
+      else if (type =='Add Customer')  {
+        addRecord(true);
+      }
+    }
 }
 
 
