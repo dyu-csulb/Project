@@ -31,7 +31,6 @@ pool.query(sql, [], (err, result) => {
         data = result.rows;
     };
     res.json(data);
-    console.log(data);
 });
 });
 

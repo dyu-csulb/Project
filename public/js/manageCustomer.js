@@ -10,8 +10,6 @@ function bind() {
   document.getElementById("btnAdd").addEventListener("click", showAddModal); 
   document.getElementById("btnDelete").addEventListener("click", deleteRecordWarning); 
   document.getElementById("btnSave").addEventListener("click", saveRecord); 
-  
-
 }
 
 
@@ -121,11 +119,11 @@ function saveRecord() {
       cboState_edit.focus();
     }
     else if (isNumeric(((txtSalesYTD_edit.value).replace('$','').replace(',','')).replace('','0').trim()) ==false) {
-      invalidEntryMsg('Please enter a valid money values for Sales YTD!');
+      invalidEntryMsg('Please enter valid money values for Sales YTD!');
       txtSalesYTD_edit.focus();
     }
     else if (isNumeric(((txtPrevSalesYTD_edit.value).replace('$','').replace(',','')).replace('','0').trim()) ==false) {
-      invalidEntryMsg('Please enter a valid money values for Prev Sales YTD!');
+      invalidEntryMsg('Please enter valid money values for Prev Sales YTD!');
       txtSalesYTD_edit.focus();
     }
     else {
@@ -144,7 +142,7 @@ function saveRecord() {
 ===============================================================*/
 function getData() {
   resetTable();
-
+  document.getElementById("lblRecordsFound").innerHTML = "Number of records found: 0";
   const url = '/api/search';
   let myObj = []  
   fetch(url, {
@@ -279,7 +277,7 @@ function getData() {
 
         document.getElementById("lblRecordsFound").innerHTML = "Number of records found: " + myObj.length;
         
-        console.log(myObj);
+    
       }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
       
       }

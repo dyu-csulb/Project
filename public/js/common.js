@@ -26,6 +26,11 @@ function invalidEntryMsg(messagetext) {
       customClass: 'swal-size-sm',
       confirmButtonText: 'OK'
   })
+  // .then(function() {
+  //   document.getElementById("txtFirstName_edit").focus();
+  // });
+
+
 }
 
 function isNumeric(str) {

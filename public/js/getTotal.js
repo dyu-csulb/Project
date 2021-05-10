@@ -1,6 +1,8 @@
 /*===============================
   Get record count total
 =================================*/
+
+
 function getTotal() {
     const url = '/api/total';
     fetch(url)

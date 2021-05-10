@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/', require('./controller/routes/pageRoutes'));
 app.use('/ManageCustomer', require('./controller/routes/pageRoutes'));
 app.use('/AddCustomer', require('./controller/routes/pageRoutes'));
-app.use('/Import', require('./controller/routes/pageRoutes'));
 app.use('/Export', require('./controller/routes/pageRoutes'));
+app.use('/Import', require('./controller/routes/pageRoutes'));
 
 /*==================
   API Routes
@@ -39,9 +39,10 @@ app.use('/api/add', require('./controller/api/add'));
 app.use('/api/maxId', require('./controller/api/maxId'));
 
 /*==================
-  Export .csv file
+  Import/Export .csv file
 ===================*/
 app.use('/ExportFile', require('./controller/routes/export'));
+app.use('/ImportFile', require('./controller/routes/import'));
 
 
 app.use(function(req, res) {
@@ -56,3 +57,4 @@ app.listen(process.env.PORT || 5200, () => {
   console.log("Server started (http://localhost:5200/)!");
 });
 
+ 
