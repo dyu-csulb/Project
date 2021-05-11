@@ -18,11 +18,9 @@ const pool = new Pool({
 }
 });
 
+const repo = require('../../repository/repo');
 
-const dblib = require('../routes/dblib');
-
-
-router.post("/",  upload.single('filename'), (req, res) => {
+router.post("/",  upload.single('filename'), async (req, res) => {
   if(!req.file || Object.keys(req.file).length === 0) {
       message = "Error: Import file not uploaded";
       return res.send(message);
@@ -31,35 +29,11 @@ router.post("/",  upload.single('filename'), (req, res) => {
   const buffer = req.file.buffer; 
   const lines = buffer.toString().split(/\r?\n/);
 
-;
-let numFailed = 0;
-let numInserted = 0;
-let errorMessage = ""
+  await repo.insertCustomer(lines)
+  .then(result => {
+    res.send(message);
+  });
 
-
-lines.forEach(line => {
-      customer = line.split(",");
-      dblib.insertCustomer(customer)
-      .then(result => {
-          if (result.trans === "fail") {
-              numFailed++;
-              errorMessage += result.msg + '\n'
-              console.log(result.msg)
-          } else {
-              console.log(result.msg);
-              numInserted++;
-              console.log(result.msg)
-          }
-      });
-});
-
-  message = "Records Processed: " + lines.length + '\n' + 
-  "Records Inserted Successfully: " + numInserted + '\n' +   
-  "Records Not Inserted: " + numFailed + '\n' +  '\n' +  
-  "Errors: " + '\n' +  errorMessage
-
-  console.log(message);
-  res.send(message);
 });
   
   module.exports = router;
