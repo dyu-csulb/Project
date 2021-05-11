@@ -21,7 +21,7 @@ function updateRecord() {
     .then(response => response.json())
     .then(result => {
       getData();
-      document.getElementById('btnClose').click();
+      //document.getElementById('btnClose').click();
       Swal.fire({
         title: 'Success',
         text: "Customer record has been updated successfully!",
